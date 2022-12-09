@@ -19,3 +19,17 @@ for row in input_list:
     total += scores[priority]
 
 print(f"Sum of the priorities is {total}")
+
+# Part 2
+# Find the item type that corresponds to the badges of each three-Elf group. What is the sum of the priorities of those item types?
+total = 0
+for idx in range(0, len(input_list), 3):
+    first_compartment = set(input_list[idx])
+    second_compartment = set(input_list[idx + 1])
+    third_compartment = set(input_list[idx + 2])
+
+    priority = list(first_compartment & second_compartment & third_compartment)[0]
+    total += scores[priority]
+
+print(f"Sum of the priorities is {total}")
+

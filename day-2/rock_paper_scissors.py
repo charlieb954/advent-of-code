@@ -47,3 +47,35 @@ for row in input_list:
     total_score += score
 
 print(total_score)
+
+# Part 2
+# what would your total score be if everything goes exactly according to your new strategy guide?
+total_score = 0
+
+for row in input_list:
+    opponent, my_pick = row.split(" ")
+    if my_pick == "Z": # WIN (Y)
+        if opponent == "A": # ROCK 
+            score = y_paper + win
+        elif opponent == "B": # PAPER
+            score = z_scissors + win
+        else: # SCISSORS
+            score = x_rock + win
+    elif my_pick == "Y": # DRAW (X)
+        if opponent == "A":
+            score = x_rock + draw
+        elif opponent == "B":
+            score = y_paper + draw
+        else:
+            score = z_scissors + draw
+    else: # LOSS (Z)
+        if opponent == "A":
+            score = z_scissors
+        elif opponent == "B":
+            score = x_rock
+        else:
+            score = y_paper
+
+    total_score += score
+
+print(total_score)

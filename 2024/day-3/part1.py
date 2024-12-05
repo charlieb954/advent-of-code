@@ -10,8 +10,7 @@ matches = re.findall(pattern, instructions)
 
 total = 0
 for match in matches:
-    match = match.lstrip("mul(").rstrip(")")
-    match = match.split(",")
-    total += int(match[0]) * int(match[1])
+    number_1, number_2 = match.lstrip("mul(").rstrip(")").split(",")
+    total += int(number_1) * int(number_2)
 
 print(f"The answer is: {total}")

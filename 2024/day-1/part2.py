@@ -1,10 +1,10 @@
 from collections import Counter
 
-list_1, list_2 = [], []
 
 with open("input.txt", "r") as file:
+    list_1, list_2 = [], []
     for line in file:
-        first, second = line.strip().split("   ")
+        first, second = line.strip().split()
         list_1.append(int(first))
         list_2.append(int(second))
 

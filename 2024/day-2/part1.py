@@ -30,14 +30,11 @@ def check_levels(level: list) -> bool:
 
 
 with open("input.txt", "r") as file:
-    levels = []
-    for level in file:
-        levels.append(level.strip().split(" "))
+    levels = [level.strip().split() for level in file]
 
 counter = 0
-
 for level in levels:
-    if check_levels(level): 
+    if check_levels(level):
         counter += 1
 
 print(f"The answer is: {counter}")

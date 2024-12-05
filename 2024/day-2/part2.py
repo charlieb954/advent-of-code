@@ -30,12 +30,9 @@ def check_levels(level: list) -> bool:
 
 
 with open("input.txt", "r") as file:
-    levels = []
-    for level in file:
-        levels.append(level.strip().split(" "))
+    levels = [level.strip().split() for level in file]
 
 counter = 0
-
 for level in levels:
     for idx in range(len(level)):
         temp_level = level.copy()

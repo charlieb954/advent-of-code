@@ -17,7 +17,7 @@ def check_page(page: list[str], rules: list[str]) -> bool:
     return True
 
 
-def fix_page(page: list[str], rules: list[str]) -> list:
+def fix_page(page: list[str], rules: list[str]) -> list[str]:
     """Attempt to fix the page to the correct order. It may take multiple fixes!
 
     Args:
@@ -25,7 +25,7 @@ def fix_page(page: list[str], rules: list[str]) -> list:
         rules (list[str]): all the rules to use to check ordering.
 
     Returns:
-        (bool): The potentially corrected page.
+        (list[str]): The potentially corrected page.
     """
     for rule in rules:
         start, end = rule.split("|")

@@ -1,9 +1,9 @@
-def check_page(page: list, rules: list) -> bool:
+def check_page(page: list[str], rules: list[str]) -> bool:
     """Check if the page is ordered correctly.
 
     Args:
-        page (list): page numbers to check.
-        rules (list): all the rules to use to check ordering.
+        page (list[str]): page numbers to check.
+        rules (list[str]): all the rules to use to check ordering.
 
     Returns:
         (bool): True if the page is in order, else False.
@@ -17,12 +17,12 @@ def check_page(page: list, rules: list) -> bool:
     return True
 
 
-def fix_page(page: list, rules: list) -> list:
-    """Attempt to fix the page to the correct order.
+def fix_page(page: list[str], rules: list[str]) -> list:
+    """Attempt to fix the page to the correct order. It may take multiple fixes!
 
     Args:
-        page (list): page numbers to check.
-        rules (list): all the rules to use to check ordering.
+        page (list[str]): page numbers to check.
+        rules (list[str]): all the rules to use to check ordering.
 
     Returns:
         (bool): The potentially corrected page.

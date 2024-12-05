@@ -1,4 +1,13 @@
-def check_page(page: list, rules: list) -> bool:
+def check_page(page: list[str], rules: list[str]) -> bool:
+    """Check if the page is ordered correctly.
+
+    Args:
+        page (list[str]): page numbers to check.
+        rules (list[str]): all the rules to use to check ordering.
+
+    Returns:
+        (bool): True if the page is in order, else False.
+    """
     for rule in rules:
         start, end = rule.split("|")
         if start in page and end in page:

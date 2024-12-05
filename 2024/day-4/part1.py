@@ -118,10 +118,7 @@ def check_diagnal_below_right(wordsearch: list) -> int:
 
 
 with open("input.txt") as f:
-    wordsearch = []
-    for row in f.readlines():
-        row = list(row.strip())
-        wordsearch.append(row)
+    wordsearch = [list(row.strip()) for row in f.readlines()]
 
 
 total = (

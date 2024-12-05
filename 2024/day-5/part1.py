@@ -17,18 +17,33 @@ def check_page(page: list[str], rules: list[str]) -> bool:
     return True
 
 
-with open("input.txt") as f:
-    rules, pages = f.read().split("\n\n")
-    rules = rules.split("\n")
-    pages = pages.split("\n")
+def read_input(filename: str = "input.txt") -> tuple[list[str], list[str]]:
+    """Read the input and format to usable lists.
+
+    Returns:
+        tuple[list[str], list[str]]: rules and pages.
+    """
+    with open(filename) as f:
+        rules, pages = f.read().split("\n\n")
+        rules = rules.split("\n")
+        pages = pages.split("\n")
+
+    return rules, pages
 
 
-total = 0
-for page in pages:
-    page = page.split(",")
+def main() -> None:
+    rules, pages = read_input()
 
-    if check_page(page, rules):
-        middle_number = len(page) // 2
-        total += int(page[middle_number])
+    total = 0
+    for page in pages:
+        page = page.split(",")
 
-print(f"The result is: {total}")
+        if check_page(page, rules):
+            middle_number = len(page) // 2
+            total += int(page[middle_number])
+
+    print(f"The result is: {total}")
+
+
+if __name__ == "__main__":
+    main()

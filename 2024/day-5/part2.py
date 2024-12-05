@@ -38,24 +38,40 @@ def fix_page(page: list[str], rules: list[str]) -> list[str]:
     return page
 
 
-with open("input.txt") as f:
-    rules, pages = f.read().split("\n\n")
-    rules = rules.split("\n")
-    pages = pages.split("\n")
+def read_input(filename: str = "input.txt") -> tuple[list[str], list[str]]:
+    """Read the input and format to usable lists.
 
-total = 0
-for page in pages:
-    page = page.split(",")
+    Returns:
+        tuple[list[str], list[str]]: rules and pages.
+    """
+    with open(filename) as f:
+        rules, pages = f.read().split("\n\n")
+        rules = rules.split("\n")
+        pages = pages.split("\n")
 
-    if check_page(page, rules) is False:
-        attempted_fix_page = fix_page(page, rules)
-        fixed = check_page(page, rules)
+    return rules, pages
 
-        while fixed is False:
+
+def main() -> None:
+    rules, pages = read_input()
+
+    total = 0
+    for page in pages:
+        page = page.split(",")
+
+        if check_page(page, rules) is False:
             fixed_page = fix_page(page, rules)
-            fixed = check_page(page, rules)
+            fixed = check_page(fixed_page, rules)
 
-        middle_number = len(page) // 2
-        total += int(page[middle_number])
+            while fixed is False:
+                fixed_page = fix_page(page, rules)
+                fixed = check_page(page, rules)
 
-print(f"The result is: {total}")
+            middle_number = len(page) // 2
+            total += int(page[middle_number])
+
+    print(f"The result is: {total}")
+
+
+if __name__ == "__main__":
+    main()
